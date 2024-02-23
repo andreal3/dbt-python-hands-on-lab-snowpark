@@ -31,7 +31,8 @@ def model(dbt, session):
     driver_confidence = 1-driver_dnf_ratio
     driver_confidence_dict = dict(zip(driver_confidence.index,driver_confidence))
 
-    dnf_by_constructor = data.groupby('CONSTRUCTOR_NAME')['DNF_FLAG'].sum()    constructor_race_entered = data.groupby('CONSTRUCTOR_NAME').count()['DNF_FLAG']
+    dnf_by_constructor = data.groupby('CONSTRUCTOR_NAME')['DNF_FLAG'].sum()    
+    constructor_race_entered = data.groupby('CONSTRUCTOR_NAME').count()['DNF_FLAG']
     constructor_dnf_ratio = (dnf_by_constructor/constructor_race_entered)
     constructor_relaiblity = 1-constructor_dnf_ratio
     constructor_relaiblity_dict = dict(zip(constructor_relaiblity.index,constructor_relaiblity))
